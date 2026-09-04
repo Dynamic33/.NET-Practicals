@@ -1,0 +1,86 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Event Registration";
+}
+
+<h2>Online Event Registration</h2>
+
+<form method="post">
+    <div asp-validation-summary="All" style="color: red;"></div>
+
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>
+                <input asp-for="Input.Name" />
+                <span asp-validation-for="Input.Name" style="color: red;">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Enrollment:</td>
+            <td>
+                <input asp-for="Input.Enrollment" />
+                <span asp-validation-for="Input.Enrollment" style="color: red;">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td>GR:</td>
+            <td>
+                <input asp-for="Input.GR" />
+                <span asp-validation-for="Input.GR" style="color: red;">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td>
+                <input type="radio" asp-for="Input.Gender" value="Male" /> Male
+                <input type="radio" asp-for="Input.Gender" value="Female" /> Female
+                <input type="radio" asp-for="Input.Gender" value="Other" /> Other
+                <span asp-validation-for="Input.Gender" style="color: red;">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Event:</td>
+            <td>
+                <select asp-for="Input.SelectedEvent">
+                    <option value="">Select Event</option>
+                    <option value="Technical Fest">Technical Fest</option>
+                    <option value="Cultural Fest">Cultural Fest</option>
+                    <option value="Sports Event">Sports Event</option>
+                </select>
+                <span asp-validation-for="Input.SelectedEvent" style="color: red;">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>
+                <input asp-for="Input.Email" />
+                <span asp-validation-for="Input.Email" style="color: red;">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit">Register</button></td>
+        </tr>
+    </table>
+</form>
+
+@if (Model.IsRegistered)
+{
+    <div>
+        <h3>Registration Details</h3>
+        <p>Full Name: @Model.Input.Name</p>
+        <p>Enrollment No.: @Model.Input.Enrollment</p>
+        <p>GR No.: @Model.Input.GR</p>
+        <p>Gender: @Model.Input.Gender</p>
+        <p>Event Name: @Model.Input.SelectedEvent</p>
+        <p>Email: @Model.Input.Email</p>
+        <p style="color: green;">Registration Successful!</p>
+    </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
