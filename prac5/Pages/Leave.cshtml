@@ -1,0 +1,71 @@
+@page
+@model prac5.Pages.LeaveModel
+@{
+    ViewData["Title"] = "Leave Management";
+}
+
+<h2>Leave Management</h2>
+
+<form method="post">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>
+                <input asp-for="Input.Name" />
+                <span asp-validation-for="Input.Name" style="color:red;">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Enrollment No:</td>
+            <td>
+                <input asp-for="Input.Enrollment" />
+                <span asp-validation-for="Input.Enrollment" style="color:red;">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Leave Type:</td>
+            <td>
+                <select asp-for="Input.LeaveType">
+                    <option value="">Select Leave</option>
+                    <option value="Medical Leave">Medical Leave</option>
+                    <option value="Casual Leave">Casual Leave</option>
+                    <option value="Personal Leave">Personal Leave</option>
+                </select>
+                <span asp-validation-for="Input.LeaveType" style="color:red;">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Leave Date:</td>
+            <td><strong>@Model.LeaveDateDisplay</strong></td>
+        </tr>
+        <tr>
+            <td>Reason:</td>
+            <td>
+                <textarea asp-for="Input.Reason"></textarea>
+                <span asp-validation-for="Input.Reason" style="color:red;">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
+
+<p style="color:green;">@Model.Message</p>
+
+@if (Model.IsSubmitted)
+{
+    <div style="border:1px solid #000; padding:10px;">
+        <h3>Leave Details</h3>
+        <p>Name: @Model.Input.Name</p>
+        <p>Enrollment No.: @Model.Input.Enrollment</p>
+        <p>Leave Type: @Model.Input.LeaveType</p>
+        <p>Leave Date: @Model.LeaveDateDisplay</p>
+        <p>Reason: @Model.Input.Reason</p>
+    </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,29 @@
+﻿@page
+@model prac5.Pages.LoginModel
+@{
+    ViewData["Title"] = "Student Login";
+}
+
+<h2>Student Login</h2>
+
+<form method="post">
+    <div>
+        <label asp-for="Username"></label><br />
+        <input asp-for="Username" />
+        <span asp-validation-for="Username" style="color:red;"></span>
+    </div>
+    <br />
+    <div>
+        <label asp-for="Password"></label><br />
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password" style="color:red;"></span>
+    </div>
+    <br />
+    <button type="submit">Login</button>
+</form>
+
+<p style="color:red;">@Model.Message</p>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

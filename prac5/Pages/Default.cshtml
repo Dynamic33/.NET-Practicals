@@ -1,0 +1,21 @@
+@page
+@model prac5.Pages.DefaultModel
+@{
+    ViewData["Title"] = "Academic Calendar";
+}
+
+<h2>Academic Calendar</h2>
+
+<form method="post">
+    <div>
+        <label asp-for="SelectedDate">Select Leave Date:</label><br />
+        <input asp-for="SelectedDate" type="date" />
+        <span asp-validation-for="SelectedDate" style="color:red;"></span>
+    </div>
+    <br />
+    <button type="submit">Apply Leave</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
