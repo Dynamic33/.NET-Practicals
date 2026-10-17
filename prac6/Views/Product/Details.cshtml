@@ -1,0 +1,29 @@
+@model prac6.Models.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Product Details</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><img src="@Model.ProductImage" width="350" height="350" /></td>
+        </tr>
+        <tr>
+            <td>
+                <h2>@Model.ProductName</h2>
+                <p>@Model.ProductDetails</p>
+                <p>@Model.ProductCategory</p>
+            </td>
+        </tr>
+    </table>
+    <button>@Html.ActionLink("Back to List", "Index")</button>
+</body>
+</html>
