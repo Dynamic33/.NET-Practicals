@@ -1,0 +1,30 @@
+@model List<prac7.Models.StudentFeedback>
+
+@{
+    ViewBag.Title = "Feedback List";
+}
+
+<div>
+    <h2>Feedback Display</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Enrollment</th>
+                <th>Student Name</th>
+                <th>Subject</th>
+                <th>Rating</th>
+                <th>Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <partial name="_FeedbackRow" model="item" />
+            }
+        </tbody>
+    </table>
+</div>
+
+<a class="btn-link" asp-controller="Feedback" asp-action="Create">Give a Feedback</a>
+<br />
+<a class="btn-link" asp-controller="Feedback" asp-action="Index">Go back</a>

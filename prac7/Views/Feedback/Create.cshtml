@@ -1,0 +1,56 @@
+@model prac7.Models.StudentFeedback
+
+@{
+    ViewBag.Title = "Create Feedback";
+}
+
+<h3>Create a Feedback</h3>
+
+<form asp-controller="Feedback" asp-action="Create" method="post">
+    <table>
+        <tr>
+            <td style="width: 30%;"><label asp-for="EnrollmentNo"></label></td>
+            <td>
+                <input asp-for="EnrollmentNo" />
+                <span asp-validation-for="EnrollmentNo" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="StudentName"></label></td>
+            <td>
+                <input asp-for="StudentName" />
+                <span asp-validation-for="StudentName" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Subject"></label></td>
+            <td>
+                <input asp-for="Subject" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Rating"></label></td>
+            <td>
+                <input asp-for="Rating" type="number" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Comments"></label></td>
+            <td>
+                <textarea asp-for="Comments"></textarea>
+                <span asp-validation-for="Comments" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+<a class="btn-link" asp-controller="Feedback" asp-action="List">View Feedback</a>
+<br />
+<a class="btn-link" asp-controller="Feedback" asp-action="Index">Go back</a>
